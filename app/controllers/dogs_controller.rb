@@ -10,7 +10,7 @@ class DogsController < ApplicationController
   end
 
   def create
-    @dog = Dog.create(user_params)
+    @dog = Dog.create(dog_params)
     if @dog.save #If saving the user was successful
       redirect_to @dog #Go to the show view of the user
     else
@@ -24,7 +24,7 @@ class DogsController < ApplicationController
 
   private
 
-  def user_params
+  def dog_params
     params.require(:dog).permit(:name, :age) #Returns a hash that was the value of "name" and "email" from the value of "user" in params.
   end
 end
